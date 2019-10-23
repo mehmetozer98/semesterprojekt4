@@ -8,6 +8,9 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using MVCEngiBeering.Models;
+using Microsoft.EntityFrameworkCore;
+using Npgsql;
 
 namespace MVCEngiBeering
 {
@@ -24,6 +27,9 @@ namespace MVCEngiBeering
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddDbContext<MvcMachineContext>(options => {
+                options.UseNpgsql("postgresql://si3_2019_group_3:sox6.genets@tek-mmmi-db0a.tek.c.sdu.dk/si3_2019_group_3_db", b => b.MigrationsAssembly("WebAPISample"));
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
