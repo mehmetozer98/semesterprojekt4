@@ -22,14 +22,8 @@ namespace MVCEngiBeering.Controllers
 
         public IActionResult Index(int machine)
         {
-            if(machine >= 1)
-            {
-                this.machine = listOfMachines.machineList[machine-1];
-                return View();
-            } else
-            {
-                return View();
-            }
+            this.machine = listOfMachines.machineList[machine];
+            return View();
         }
 
         public IActionResult Privacy()
@@ -39,12 +33,12 @@ namespace MVCEngiBeering.Controllers
 
         public IActionResult BBMachine(int submit)
         {
-            if(submit != 0)
+            if (submit != 0)
             {
-            machine.chosencommand = submit;
+                this.machine.chosencommand = submit;
             }
 
-            ViewBag.SubmitValue = machine.chosencommand;
+            ViewBag.SubmitValue = listOfMachines.machineList[0].chosencommand;
             return View();
         }
 

@@ -15,6 +15,5 @@ namespace MVCEngiBeering.Models
             machineList[0].chosencommand = 4;
             machineList[1].chosencommand = 1;
         }
-
     }
 }
