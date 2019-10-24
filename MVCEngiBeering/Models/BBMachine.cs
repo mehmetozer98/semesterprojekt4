@@ -1,5 +1,4 @@
-﻿using System;
-namespace MVCEngiBeering.Models
+﻿namespace MVCEngiBeering.Models
 {
     public class BBMachine
     {
