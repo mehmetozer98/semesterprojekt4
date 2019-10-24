@@ -1,11 +1,12 @@
 using Microsoft.EntityFrameworkCore;
+using MVCEngiBeering.Models;
 
-namespace MVCEngiBeering.Models
+namespace MVCEngiBeering.Data
 {
-    public class MvcMachineContext : DbContext
+    public class MvcEngibeeringContext : DbContext
     {
         
-        public MvcMachineContext(DbContextOptions<MvcMachineContext> options)
+        public MvcEngibeeringContext(DbContextOptions<MvcEngibeeringContext> options)
                 : base(options)
             {
                 

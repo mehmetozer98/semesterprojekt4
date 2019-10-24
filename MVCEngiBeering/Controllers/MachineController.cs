@@ -4,23 +4,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection.PortableExecutable;
 using Microsoft.AspNetCore.Mvc;
+using MVCEngiBeering.Data;
 using MVCEngiBeering.Models;
 
 namespace MVCEngiBeering.Controllers
 {
     public class MachineController : Controller
     {
-        private MvcMachineContext _mvcMachineContext;
+        private MvcEngibeeringContext _mvcEngibeeringContext;
 
-        public MachineController(MvcMachineContext mvcMachineContext)
+        public MachineController(MvcEngibeeringContext mvcEngibeeringContext)
         {
-            _mvcMachineContext = mvcMachineContext;
+            _mvcEngibeeringContext = mvcEngibeeringContext;
         }
 
         public IActionResult Get(int id)
         {
 
-            BBMachine bbMachine = _mvcMachineContext.machines.First();
+            BBMachine bbMachine = _mvcEngibeeringContext.machines.First();
             
             return View(bbMachine);
         }

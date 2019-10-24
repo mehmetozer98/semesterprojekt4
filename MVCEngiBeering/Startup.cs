@@ -10,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MVCEngiBeering.Models;
 using Microsoft.EntityFrameworkCore;
+using MVCEngiBeering.Data;
 using Npgsql;
 
 namespace MVCEngiBeering
@@ -27,7 +28,7 @@ namespace MVCEngiBeering
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddDbContext<MvcMachineContext>(options =>
+            services.AddDbContext<MvcEngibeeringContext>(options =>
                 options.UseNpgsql(Configuration.GetConnectionString("MvcMachineContext")));
         }
 
