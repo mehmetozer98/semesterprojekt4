@@ -27,9 +27,8 @@ namespace MVCEngiBeering
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddDbContext<MvcMachineContext>(options => {
-                options.UseNpgsql("postgresql://si3_2019_group_3:sox6.genets@tek-mmmi-db0a.tek.c.sdu.dk/si3_2019_group_3_db", b => b.MigrationsAssembly("WebAPISample"));
-            });
+            services.AddDbContext<MvcMachineContext>(options =>
+                options.UseNpgsql(Configuration.GetConnectionString("MvcMachineContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
