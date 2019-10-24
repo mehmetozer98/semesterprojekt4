@@ -17,7 +17,7 @@ namespace MVCEngiBeering.Controllers
         public IActionResult Get(int id)
         {
 
-            BBMachine bbMachine = _mvcEngibeeringContext.machines.First();
+            BBMachine bbMachine = _mvcEngibeeringContext.machines.Find(id);
             
             return View(bbMachine);
         }
