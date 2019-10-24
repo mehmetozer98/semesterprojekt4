@@ -1,6 +1,10 @@
-﻿using System.Diagnostics;
+﻿using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using MVCEngiBeering.Data;
 using MVCEngiBeering.Models;
 
 namespace MVCEngiBeering.Controllers
@@ -8,17 +12,20 @@ namespace MVCEngiBeering.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private BBMachineList listOfMachines = new BBMachineList();
-        private BBMachine machine = new BBMachine();
+        private MvcEngibeeringContext _mvcEngibeeringContext;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, MvcEngibeeringContext mvcEngibeeringContext)
         {
             _logger = logger;
+            _mvcEngibeeringContext = mvcEngibeeringContext;
         }
 
-        public IActionResult Index(int machine)
+        public IActionResult Index()
         {
-            this.machine = listOfMachines.machineList[machine];
+            IQueryable<int> idQuery = from m in _mvcEngibeeringContext.machines orderby m.id select m.id;
+            var machines = from m in _mvcEngibeeringContext.machines select m;
+            var machineVM = new BBMachineViewModel();
+
             return View();
         }
 
@@ -29,12 +36,6 @@ namespace MVCEngiBeering.Controllers
 
         public IActionResult BBMachine(int submit)
         {
-            if (submit != 0)
-            {
-                this.machine.currentstate = submit;
-            }
-
-            ViewBag.SubmitValue = listOfMachines.machineList[0].currentstate;
             return View();
         }
 

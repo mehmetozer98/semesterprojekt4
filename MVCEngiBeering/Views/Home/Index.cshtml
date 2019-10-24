@@ -1,4 +1,5 @@
-﻿@{
+﻿@model MVCEngiBeering.Models.BBMachineViewModel
+@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -6,10 +7,8 @@
     <h1 class="display-4">Welcome to EngiBeering</h1>
     <p>Please choose the Beer brewing machine you wish to use.</p>
 
-    @using (Html.BeginForm())
+    @foreach (var machine in Model.Machines)
     {
-    <button type="submit" name="machine" value=1 asp-action="BBMachine">Machine 1</button>
-        <button type="submit" name="machine" value=2 asp-action="BBMachine">Machine 2</button>
-
+        @Html.DisplayFor(modelItem => machine.id)
     }
 </div>
