@@ -3,12 +3,8 @@ namespace MVCEngiBeering.Models
 {
     public class BBMachine
     {
-        public int Id {get; set; }
-        public int chosencommand { get; set; }
-        private int speed { get; set; }
-        private int product { get; set; }
-        private int batchId { get; set; }
-        private int amount { get; set; }
+        public int id {get; set; }
+        public int currentstate { get; set; }
         public BBMachine()
         {
         }

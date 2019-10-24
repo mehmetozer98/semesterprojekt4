@@ -12,8 +12,8 @@ namespace MVCEngiBeering.Models
             machineList = new List<BBMachine>();
             machineList.Add(new BBMachine());
             machineList.Add(new BBMachine());
-            machineList[0].chosencommand = 4;
-            machineList[1].chosencommand = 1;
+            machineList[0].currentstate = 4;
+            machineList[1].currentstate = 1;
         }
     }
 }

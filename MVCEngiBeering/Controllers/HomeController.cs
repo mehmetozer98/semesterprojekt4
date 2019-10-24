@@ -35,10 +35,10 @@ namespace MVCEngiBeering.Controllers
         {
             if (submit != 0)
             {
-                this.machine.chosencommand = submit;
+                this.machine.currentstate = submit;
             }
 
-            ViewBag.SubmitValue = listOfMachines.machineList[0].chosencommand;
+            ViewBag.SubmitValue = listOfMachines.machineList[0].currentstate;
             return View();
         }
 

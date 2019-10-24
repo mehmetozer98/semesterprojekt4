@@ -23,7 +23,7 @@ namespace MVCEngiBeering.Controllers
             //Console.WriteLine("FUUUUUUUUUUUUUUUUUUUUUUUUUUUCK" + id);
             //var bbMachine = _mvcMachineContext.Machine.Find(1);
             
-            BBMachine bbMachine = _mvcMachineContext.Machine.First();
+            BBMachine bbMachine = _mvcMachineContext.machines.First();
             
             return View(bbMachine);
         }
