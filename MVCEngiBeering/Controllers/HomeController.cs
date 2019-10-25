@@ -22,20 +22,8 @@ namespace MVCEngiBeering.Controllers
 
         public IActionResult Index()
         {
-            List<BBMachineViewModel> machines = new List<BBMachineViewModel>();
-            foreach (var machine in _mvcEngibeeringContext.machines.ToList())
-            {
-                BBMachineViewModel temp = new BBMachineViewModel();
-                temp.currentamount = machine.currentamount;
-                temp.currentproduct = machine.currentproduct;
-                temp.currentspeed = machine.currentspeed;
-                temp.currentstate = machine.currentstate;
-                temp.id = machine.id;
-                temp.uniqueid = machine.uniqueid;
-                machines.Add(temp);
-            }
             
-            return View(machines);
+            return View(UpdateViewModel());
         }
 
         public IActionResult Privacy()
@@ -54,7 +42,23 @@ namespace MVCEngiBeering.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
+        //Making BBMachineViewModel objects from the database
+        private List<BBMachineViewModel> UpdateViewModel()
+        {
+            List<BBMachineViewModel> machines = new List<BBMachineViewModel>();
+            foreach (var machine in _mvcEngibeeringContext.machines.ToList())
+            {
+                BBMachineViewModel temp = new BBMachineViewModel();
+
+                temp.currentamount = machine.currentamount;
+                temp.currentproduct = machine.currentproduct;
+                temp.currentspeed = machine.currentspeed;
+                temp.currentstate = machine.currentstate;
+                temp.id = machine.id;
+                temp.uniqueid = machine.uniqueid;
+                machines.Add(temp);
+            }
+            return machines;
+        }
     }
-
-
 }

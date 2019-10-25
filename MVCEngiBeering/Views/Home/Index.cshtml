@@ -11,6 +11,7 @@
     
     @foreach (var machine in Model)
     {
-        @Html.DisplayFor(modelItem => machine.id)
+        <input type="Submit" value="Machine @Html.DisplayFor(modelItem => machine.id)" />
     }
+
 </div>
