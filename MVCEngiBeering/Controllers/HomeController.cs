@@ -49,14 +49,16 @@ namespace MVCEngiBeering.Controllers
             List<BBMachineViewModel> machines = new List<BBMachineViewModel>();
             foreach (var machine in _mvcEngibeeringContext.machines.ToList())
             {
-                BBMachineViewModel temp = new BBMachineViewModel();
+                BBMachineViewModel temp = new BBMachineViewModel
+                {
+                    currentamount = machine.currentamount,
+                    currentproduct = machine.currentproduct,
+                    currentspeed = machine.currentspeed,
+                    currentstate = machine.currentstate,
+                    id = machine.id,
+                    uniqueid = machine.uniqueid
+                };
 
-                temp.currentamount = machine.currentamount;
-                temp.currentproduct = machine.currentproduct;
-                temp.currentspeed = machine.currentspeed;
-                temp.currentstate = machine.currentstate;
-                temp.id = machine.id;
-                temp.uniqueid = machine.uniqueid;
                 machines.Add(temp);
             }
             return machines;

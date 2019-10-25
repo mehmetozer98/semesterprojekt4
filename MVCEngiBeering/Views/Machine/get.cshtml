@@ -1,5 +1,5 @@
 @using Microsoft.EntityFrameworkCore.Infrastructure
-@model MVCEngiBeering.Models.BBMachine
+@model MVCEngiBeering.ViewModels.BBMachineViewModel
 
 @{
     ViewBag.Title = "title";
@@ -9,7 +9,8 @@
 <h2>title</h2>
 @Html.DisplayFor(model => model.id)
 @Html.DisplayFor(model => model.uniqueid)
-@Html.DisplayFor(model => model.currentstate)
+@Html.DisplayNameFor(model => model.currentstate)
+@Html.DisplayFor(model => model.currentstate.name)
 @Html.DisplayFor(model => model.currentspeed)
 @Html.DisplayFor(model => model.currentamount)
 @Html.DisplayFor(model => model.currentproduct)

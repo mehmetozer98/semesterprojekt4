@@ -2,6 +2,7 @@ using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using MVCEngiBeering.Data;
 using MVCEngiBeering.Models;
+using MVCEngiBeering.ViewModels;
 
 namespace MVCEngiBeering.Controllers
 {
@@ -17,9 +18,19 @@ namespace MVCEngiBeering.Controllers
         public IActionResult Get(int id)
         {
 
-            BBMachine bbMachine = _mvcEngibeeringContext.machines.Find(id);
-            
-            return View(bbMachine);
+            BBMachine machine = _mvcEngibeeringContext.machines.Find(id);
+            BBMachineViewModel temp = new BBMachineViewModel
+            {
+                currentamount = machine.currentamount,
+                currentproduct = machine.currentproduct,
+                currentspeed = machine.currentspeed,
+                currentstate = machine.currentstate,
+                id = machine.id,
+                uniqueid = machine.uniqueid
+            };
+
+
+            return View(temp);
         }
 
         public IActionResult Index()
