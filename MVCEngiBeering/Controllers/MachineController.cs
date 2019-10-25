@@ -1,3 +1,4 @@
+using System.Data.Entity;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using MVCEngiBeering.Data;
@@ -17,7 +18,14 @@ namespace MVCEngiBeering.Controllers
 
         public IActionResult Get(int id)
         {
-
+            using (var context = _mvcEngibeeringContext)
+            {
+                var machine = context.machines.Single(m => m.id == id);
+                context.machines(machine)
+            }
+            
+            
+            
             BBMachine machine = _mvcEngibeeringContext.machines.Find(id);
             BBMachineViewModel temp = new BBMachineViewModel
             {
