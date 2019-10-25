@@ -1,4 +1,4 @@
-﻿@model List<MVCEngiBeering.Models.BBMachineViewModel>
+﻿@model List<MVCEngiBeering.ViewModels.BBMachineViewModel>
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -11,7 +11,7 @@
     
     @foreach (var machine in Model)
     {
-        <input type="Submit" value="Machine @Html.DisplayFor(modelItem => machine.id)" />
+        <a href="machine/get/@Html.DisplayFor(modelitem => machine.id)"><button>Machine @Html.DisplayFor(modelitem => machine.id)</button></a>
     }
 
 </div>

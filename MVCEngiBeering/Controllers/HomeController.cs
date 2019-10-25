@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using MVCEngiBeering.Data;
 using MVCEngiBeering.Models;
+using MVCEngiBeering.ViewModels;
 
 namespace MVCEngiBeering.Controllers
 {

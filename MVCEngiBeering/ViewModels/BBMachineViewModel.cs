@@ -1,7 +1,8 @@
 using System;
 using System.Collections.Generic;
+using MVCEngiBeering.Models;
 
-namespace MVCEngiBeering.Models
+namespace MVCEngiBeering.ViewModels
 {
     public class BBMachineViewModel
     {
