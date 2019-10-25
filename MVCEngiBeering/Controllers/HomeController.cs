@@ -22,11 +22,20 @@ namespace MVCEngiBeering.Controllers
 
         public IActionResult Index()
         {
-            IQueryable<int> idQuery = from m in _mvcEngibeeringContext.machines orderby m.id select m.id;
-            var machines = from m in _mvcEngibeeringContext.machines select m;
-            var machineVM = new BBMachineViewModel();
-
-            return View();
+            List<BBMachineViewModel> machines = new List<BBMachineViewModel>();
+            foreach (var machine in _mvcEngibeeringContext.machines.ToList())
+            {
+                BBMachineViewModel temp = new BBMachineViewModel();
+                temp.currentamount = machine.currentamount;
+                temp.currentproduct = machine.currentproduct;
+                temp.currentspeed = machine.currentspeed;
+                temp.currentstate = machine.currentstate;
+                temp.id = machine.id;
+                temp.uniqueid = machine.uniqueid;
+                machines.Add(temp);
+            }
+            
+            return View(machines);
         }
 
         public IActionResult Privacy()
