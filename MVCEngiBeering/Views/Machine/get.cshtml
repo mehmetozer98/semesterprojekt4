@@ -7,13 +7,104 @@
 }
 
 <h2>title</h2>
-@Html.DisplayFor(model => model.id)
-@Html.DisplayFor(model => model.uniqueid)
-@Html.DisplayNameFor(model => model.currentstate)
-@Html.DisplayFor(model => model.currentstate.name)
-@Html.DisplayFor(model => model.currentspeed)
-@Html.DisplayFor(model => model.currentamount)
-@Html.DisplayFor(model => model.currentproduct)
+<table>
+    <tr>
+        <td>
+            <h4>
+            @Html.DisplayNameFor(model => model.id)
+            </h4>
+        </td>
+        <td>
+            <h4>
+            @Html.DisplayNameFor(model => model.uniqueid)
+            </h4>
+        </td>
+        <td>
+            <h4>
+            @Html.DisplayNameFor(model => model.currentstate)
+            </h4>
+        </td>
+        <td>
+            <h4>
+            @Html.DisplayNameFor(model => model.currentspeed)
+            </h4>
+        </td>
+        <td>
+            <h4>
+            @Html.DisplayNameFor(model => model.currentamount)
+            </h4>
+        </td>
+        <td>
+            <h4>
+            @Html.DisplayNameFor(model => model.currentproduct)
+            </h4>
+        </td>
+    </tr>
+    <tr>
+        
+
+        <td>
+            @Html.DisplayFor(model => model.id)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.uniqueid)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.currentstate.name)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.currentspeed)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.currentamount)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.currentproduct)
+        </td>
+    </tr>
+        <tr>
+            <td colspan="1">
+                <h4>Speed:</h4>
+                <input type="number"/>
+            </td>
+    </tr>
+    <tr>
+            <td colspan="1">
+                <h4>Product:</h4>
+                <select>
+                    <option value=0>Pilsner</option>
+                    <option value=1>Wheat</option>
+                    <option value="2">IPA</option>
+                    <option value="3">Stout</option>
+                    <option value="4">Ale</option>
+                    <option value="5">Alcohol Free</option>
+                </select>
+            </td>
+    </tr>
+    <tr>
+            <td colspan="1">
+                <h4>Amount:</h4>
+                <input type="number"/>
+            </td>
+    </tr>
+    <tr>
+        <td style="width:20%">
+            <button>Reset</button>
+        </td>
+        <td style="width:20%">
+            <button>Start</button>
+        </td>
+        <td style="width:20%">
+            <button>Stop</button>
+        </td>
+        <td style="width:20%">
+            <button>Abort</button>
+        </td>
+        <td style="width:20%">
+            <button>Clear</button>
+        </td>
+    </tr>
+</table>
 
 
 
