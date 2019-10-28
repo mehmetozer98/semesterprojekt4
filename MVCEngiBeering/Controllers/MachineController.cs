@@ -1,6 +1,6 @@
-using System.Data.Entity;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using MVCEngiBeering.Data;
 using MVCEngiBeering.Models;
 using MVCEngiBeering.ViewModels;
@@ -18,21 +18,18 @@ namespace MVCEngiBeering.Controllers
 
         public IActionResult Get(int id)
         {
-            using (var context = _mvcEngibeeringContext)
-            {
-                var machine = context.machines.Single(m => m.id == id);
-                context.machines(machine)
-            }
+            BBMachine machine = _mvcEngibeeringContext.machines.Include(m => m.currentstate).Single(m => m.id == id);
             
-            
-            
-            BBMachine machine = _mvcEngibeeringContext.machines.Find(id);
             BBMachineViewModel temp = new BBMachineViewModel
             {
                 currentamount = machine.currentamount,
                 currentproduct = machine.currentproduct,
                 currentspeed = machine.currentspeed,
-                currentstate = machine.currentstate,
+                currentstate =  new MachineStateViewModel
+                {
+                    id = machine.currentstate.id,
+                    name = machine.currentstate.name
+                },
                 id = machine.id,
                 uniqueid = machine.uniqueid
             };

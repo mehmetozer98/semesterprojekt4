@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using MVCEngiBeering.Data;
-using MVCEngiBeering.Models;
 using MVCEngiBeering.ViewModels;
 
 namespace MVCEngiBeering.Controllers
@@ -47,14 +46,18 @@ namespace MVCEngiBeering.Controllers
         private List<BBMachineViewModel> UpdateViewModel()
         {
             List<BBMachineViewModel> machines = new List<BBMachineViewModel>();
-            foreach (var machine in _mvcEngibeeringContext.machines.ToList())
+            foreach (var machine in _mvcEngibeeringContext.machines.Include(m => m.currentstate).ToList())
             {
                 BBMachineViewModel temp = new BBMachineViewModel
                 {
                     currentamount = machine.currentamount,
                     currentproduct = machine.currentproduct,
                     currentspeed = machine.currentspeed,
-                    currentstate = machine.currentstate,
+                    currentstate =  new MachineStateViewModel
+                    {
+                        id = machine.currentstate.id,
+                        name = machine.currentstate.name
+                    },
                     id = machine.id,
                     uniqueid = machine.uniqueid
                 };
