@@ -1,9 +1,12 @@
 using System.Linq;
+using System.Text.Json;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using MVCEngiBeering.Classes;
 using MVCEngiBeering.Data;
 using MVCEngiBeering.Models;
 using MVCEngiBeering.ViewModels;
+using Newtonsoft.Json;
 
 namespace MVCEngiBeering.Controllers
 {
@@ -36,6 +39,15 @@ namespace MVCEngiBeering.Controllers
 
 
             return View(temp);
+        }
+        
+        public void SendCntrlCmd(int cntrlCmdValue, int machSpeedValue, int productID, int amount, int id)
+        {
+            int batchId = 0;
+            CntrlCmd cntrlCmd = new CntrlCmd(cntrlCmdValue, machSpeedValue, productID, amount, batchId);
+            string output = JsonConvert.SerializeObject(cntrlCmd);
+            Sender sender = new Sender("127.0.0.1");
+            sender.send(output);
         }
     }
 }
