@@ -62,16 +62,18 @@
             @Html.DisplayFor(model => model.currentproduct)
         </td>
     </tr>
+    <form method="post">
+        <input type="hidden" value="@Html.DisplayFor(model => model.id)" id="id"/>
         <tr>
             <td colspan="1">
                 <h4>Speed:</h4>
-                <input type="number"/>
+                <input type="number" id="speed"/>
             </td>
-    </tr>
-    <tr>
+        </tr>
+        <tr>
             <td colspan="1">
                 <h4>Product:</h4>
-                <select>
+                <select id="product">
                     <option value=0>Pilsner</option>
                     <option value=1>Wheat</option>
                     <option value=2>IPA</option>
@@ -80,30 +82,31 @@
                     <option value=5>Alcohol Free</option>
                 </select>
             </td>
-    </tr>
-    <tr>
+        </tr>
+        <tr>
             <td colspan="1">
                 <h4>Amount:</h4>
-                <input type="number"/>
+                <input type="number" id="amount"/>
             </td>
-    </tr>
-    <tr>
-        <td style="width:20%">
-            <button>Reset</button>
-        </td>
-        <td style="width:20%">
-            <button>Start</button>
-        </td>
-        <td style="width:20%">
-            <button>Stop</button>
-        </td>
-        <td style="width:20%">
-            <button>Abort</button>
-        </td>
-        <td style="width:20%">
-            <button>Clear</button>
-        </td>
-    </tr>
+        </tr>
+        <tr>
+            <td style="width:20%">
+                <button asp-controller="Machine" asp-action="SendCntrlCmd" id="reset" value="1">Reset</button>
+            </td>
+            <td style="width:20%">
+                <button asp-controller="Machine" asp-action="SendCntrlCmd" id="start" value="2">Start</button>
+            </td>
+            <td style="width:20%">
+                <button asp-controller="Machine" asp-action="SendCntrlCmd" id="stop" value="3">Stop</button>
+            </td>
+            <td style="width:20%">
+                <button asp-controller="Machine" asp-action="SendCntrlCmd" id="abort" value="4">Abort</button>
+            </td>
+            <td style="width:20%">
+                <button asp-controller="Machine" asp-action="SendCntrlCmd" id="clear" value="5">Clear</button>
+            </td>
+        </tr>
+    </form>
 </table>
 
 

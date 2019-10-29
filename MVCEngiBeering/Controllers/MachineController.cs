@@ -41,13 +41,15 @@ namespace MVCEngiBeering.Controllers
             return View(temp);
         }
         
-        public void SendCntrlCmd(int cntrlCmdValue, int machSpeedValue, int productID, int amount, int id)
+        [HttpPost]
+        public IActionResult SendCntrlCmd(int cntrlCmdValue, int machSpeedValue, int productID, int amount, int id)
         {
             int batchId = 0;
             CntrlCmd cntrlCmd = new CntrlCmd(cntrlCmdValue, machSpeedValue, productID, amount, batchId);
             string output = JsonConvert.SerializeObject(cntrlCmd);
             Sender sender = new Sender("127.0.0.1");
             sender.send(output);
+            return View();
         }
     }
 }
