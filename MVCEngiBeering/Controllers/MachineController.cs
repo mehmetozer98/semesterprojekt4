@@ -37,10 +37,5 @@ namespace MVCEngiBeering.Controllers
 
             return View(temp);
         }
-
-        public IActionResult Index()
-        {
-            return View();
-        }
     }
 }
