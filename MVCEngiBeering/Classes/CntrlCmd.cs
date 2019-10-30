@@ -2,19 +2,19 @@ namespace MVCEngiBeering.Classes
 {
     public class CntrlCmd
     {
-        private int cntrlCmdValue;
-        private int machSpeedValue;
-        private int batchID;
-        private int productID;
-        private int amount;
+        public int cntrlCommandValue;
+        public int machSpeedValue;
+        public int batchID;
+        public int productID;
+        public int amount;
 
-        public CntrlCmd(int cntrlCmdValue, int machSpeedValue, int productID, int amount, int batchId)
+        public CntrlCmd(int cntrlCommandValue, int machSpeedValue, int productID, int amount, int batchId)
         {
-            this.cntrlCmdValue = cntrlCmdValue;
+            this.cntrlCommandValue = cntrlCommandValue;
             this.machSpeedValue = machSpeedValue;
             this.productID = productID;
             this.amount = amount;
-            this.batchID = batchID;
+            this.batchID = batchId;
         }
     }
 }
