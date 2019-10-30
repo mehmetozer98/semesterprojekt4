@@ -49,7 +49,7 @@ namespace MVCEngiBeering.Controllers
             string output = JsonConvert.SerializeObject(cntrlCmd);
             Sender sender = new Sender("127.0.0.1");
             sender.send(output);
-            return View();
+            return Redirect("get/" + id);
         }
     }
 }
