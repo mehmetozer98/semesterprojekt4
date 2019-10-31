@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.VisualBasic;
+using MVCEngiBeering.Classes;
+using MVCEngiBeering.Data;
+using MVCEngiBeering.Models;
+using Newtonsoft.Json;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -10,6 +15,12 @@ namespace MVCEngiBeering.Controllers
 {
     public class BatchReportController : Controller
     {
+        private MvcEngibeeringContext _mvcEngibeeringContext;
+
+        public BatchReportController(MvcEngibeeringContext mvcEngibeeringContext)
+        {
+            _mvcEngibeeringContext = mvcEngibeeringContext;
+        } 
         // GET: /<controller>/
         public IActionResult Index()
         {
@@ -18,6 +29,18 @@ namespace MVCEngiBeering.Controllers
         public IActionResult Get(int id)
         {
             return View();
+        }
+
+        [HttpPost]
+        public void AddReading(string json)
+        {
+            DataReceiving data = JsonConvert.DeserializeObject<DataReceiving>(json);
+            DataReading temp = new DataReading();
+            temp.time = Convert.ToDateTime(data.TimeStamp);
+            temp.type = data.Object;
+            temp.value = data.Value;
+            BBMachine machine = _mvcEngibeeringContext.machines.Find(data.MachineId);
+            
         }
     }
 }
