@@ -1,4 +1,6 @@
+using System.Security.Cryptography.X509Certificates;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.Extensions.Hosting;
 
 namespace MVCEngiBeering
@@ -14,7 +16,16 @@ namespace MVCEngiBeering
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    webBuilder.UseStartup<Startup>();
+                    /*
+                    webBuilder.ConfigureKestrel(options =>
+                    {
+                        options.ConfigureHttpsDefaults(ListenOptions =>
+                        {
+                            ListenOptions.ServerCertificate = new X509Certificate2();
+                        });
+                    });
+                    */
+                    webBuilder.UseUrls("https://0.0.0.0:5001").UseStartup<Startup>();
                 });
     }
 }
