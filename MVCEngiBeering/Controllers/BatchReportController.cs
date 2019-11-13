@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.VisualBasic;
 using MVCEngiBeering.Classes;
 using MVCEngiBeering.Data;
@@ -32,15 +33,25 @@ namespace MVCEngiBeering.Controllers
         }
 
         [HttpPost]
-        public void AddReading(string json)
+        public IActionResult AddReading(string json)
         {
+            Console.WriteLine("---------------------------------------------");
+            Console.WriteLine("received json");
+            Console.WriteLine("json: " + json);
+            
             DataReceiving data = JsonConvert.DeserializeObject<DataReceiving>(json);
+            Console.WriteLine("---------------------------------------------");
+            Console.WriteLine("json objected converted");
             DataReading temp = new DataReading();
             temp.time = Convert.ToDateTime(data.TimeStamp);
             temp.type = data.Object;
             temp.value = data.Value;
-            BBMachine machine = _mvcEngibeeringContext.machines.Find(data.MachineId);
-            
+            BBMachine machine = _mvcEngibeeringContext.machines.Find(Convert.ToInt32(data.MachineId));
+            Console.WriteLine("---------------------------------------------");
+            Console.WriteLine("adding object");
+            _mvcEngibeeringContext.datareadings.Add(temp);
+            _mvcEngibeeringContext.SaveChanges();
+            return Ok();
         }
     }
 }

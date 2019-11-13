@@ -6,7 +6,6 @@ namespace MVCEngiBeering.ViewModels
 {
     public class BBMachineViewModel
     {
-        public List<BBMachine> Machines { get; set; }
         public int id {get; set; }
         public Guid uniqueid { get; set; }
         public MachineStateViewModel currentstate { get; set; }

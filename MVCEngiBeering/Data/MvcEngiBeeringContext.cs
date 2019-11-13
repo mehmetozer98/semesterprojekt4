@@ -20,6 +20,6 @@ namespace MVCEngiBeering.Data
         public DbSet<BBMachine> machines { get; set; }
         public DbSet<MachineState> statetypes { get; set; }
         public DbSet<ProductType> producttypes { get; set; }
-        
+        public DbSet<DataReading> datareadings { get; set; }
     }
 }
