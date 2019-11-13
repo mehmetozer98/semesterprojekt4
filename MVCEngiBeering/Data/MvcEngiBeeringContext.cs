@@ -21,5 +21,6 @@ namespace MVCEngiBeering.Data
         public DbSet<MachineState> statetypes { get; set; }
         public DbSet<ProductType> producttypes { get; set; }
         public DbSet<DataReading> datareadings { get; set; }
+        public DbSet<Batch> batches { get; set; }
     }
 }

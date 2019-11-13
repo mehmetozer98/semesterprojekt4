@@ -8,5 +8,6 @@ namespace MVCEngiBeering.Models
         public int totalamount { get; set; }
         public int actualamount { get; set; }
         public int defectamount { get; set; }
+        public int setspeed { get; set; }
     }
 }

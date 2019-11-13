@@ -44,14 +44,21 @@ namespace MVCEngiBeering.Controllers
             Console.WriteLine("json objected converted");
             DataReading temp = new DataReading();
             temp.time = Convert.ToDateTime(data.TimeStamp);
-            temp.type = data.Object;
+            temp.type = data.Type;
             temp.value = data.Value;
+            temp.batchid = _mvcEngibeeringContext.batches.Find(data.BatchId);
             BBMachine machine = _mvcEngibeeringContext.machines.Find(Convert.ToInt32(data.MachineId));
+            
             Console.WriteLine("---------------------------------------------");
             Console.WriteLine("adding object");
             _mvcEngibeeringContext.datareadings.Add(temp);
             _mvcEngibeeringContext.SaveChanges();
             return Ok();
+        }
+
+        private int getNextBatchId()
+        {
+            return _mvcEngibeeringContext.batches.Max().id + 1;
         }
     }
 }
