@@ -41,7 +41,7 @@ namespace MVCEngiBeering.Controllers
         private List<BBMachineViewModel> UpdateViewModel()
         {
             List<BBMachineViewModel> machines = new List<BBMachineViewModel>();
-            foreach (var machine in _mvcEngibeeringContext.machines.Include(m => m.currentstate).ToList())
+            foreach (var machine in _mvcEngibeeringContext.machines.Include(m => m.currentstate).Include(m => m.currentproduct).ToList())
             {
                 BBMachineViewModel temp = new BBMachineViewModel
                 {

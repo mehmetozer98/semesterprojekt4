@@ -11,6 +11,7 @@ namespace MVCEngiBeering.Models
         [Column("currentstate"),ForeignKey("id")]
         public MachineState currentstate { get; set; }
         public int currentspeed { get; set; }
+        [Column("currentproduct"),ForeignKey("id")]
         public ProductType currentproduct { get; set; }
         public int currentamount { get; set; }
         
