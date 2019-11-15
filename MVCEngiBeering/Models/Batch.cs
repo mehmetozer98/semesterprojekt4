@@ -5,9 +5,7 @@ namespace MVCEngiBeering.Models
         public int id { get; set; }
         public BBMachine machine { get; set; }
         public ProductType producttype { get; set; }
-        public int totalamount { get; set; }
-        public int actualamount { get; set; }
-        public int defectamount { get; set; }
+        public int setamount { get; set; }
         public int setspeed { get; set; }
     }
 }
