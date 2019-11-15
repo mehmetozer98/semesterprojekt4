@@ -10,7 +10,7 @@ namespace MVCEngiBeering.ViewModels
         public Guid uniqueid { get; set; }
         public MachineStateViewModel currentstate { get; set; }
         public int currentspeed { get; set; }
-        public int currentproduct { get; set; }
+        public ProductTypeViewModel currentproduct { get; set; }
         public int currentamount { get; set; }
         
     }

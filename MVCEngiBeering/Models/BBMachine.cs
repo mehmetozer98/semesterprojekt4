@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MVCEngiBeering.Models
@@ -10,8 +11,10 @@ namespace MVCEngiBeering.Models
         [Column("currentstate"),ForeignKey("id")]
         public MachineState currentstate { get; set; }
         public int currentspeed { get; set; }
-        public int currentproduct { get; set; }
+        public ProductType currentproduct { get; set; }
         public int currentamount { get; set; }
+        
+        public List<Batch> Batches { get; set; }
 
         public BBMachine()
         {

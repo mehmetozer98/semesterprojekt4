@@ -46,7 +46,11 @@ namespace MVCEngiBeering.Controllers
                 BBMachineViewModel temp = new BBMachineViewModel
                 {
                     currentamount = machine.currentamount,
-                    currentproduct = machine.currentproduct,
+                    currentproduct = new ProductTypeViewModel
+                    {
+                        id = machine.currentproduct.id,
+                        name = machine.currentproduct.name
+                    },
                     currentspeed = machine.currentspeed,
                     currentstate =  new MachineStateViewModel
                     {
