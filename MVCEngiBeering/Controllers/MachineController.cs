@@ -44,7 +44,7 @@ namespace MVCEngiBeering.Controllers
         [HttpPost]
         public IActionResult SendCntrlCmd(int cntrlCmdValue, int machSpeedValue, int productID, int amount, int id)
         {
-            int batchId = 0;
+            int batchId = _mvcEngibeeringContext.batches.Max().id + 1;
             CntrlCmd cntrlCmd = new CntrlCmd(cntrlCmdValue, machSpeedValue, productID, amount, batchId);
             string output = JsonConvert.SerializeObject(cntrlCmd);
             Sender sender = new Sender("127.0.0.1");

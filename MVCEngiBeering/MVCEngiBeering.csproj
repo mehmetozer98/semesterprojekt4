@@ -16,7 +16,7 @@
 
   <ItemGroup>
     <Folder Include="Pages" />
-    <Folder Include="Views\BatchReport\" />
+    <Folder Include="Views\Batch\" />
   </ItemGroup>
 
 </Project>

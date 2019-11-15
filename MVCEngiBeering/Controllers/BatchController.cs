@@ -14,11 +14,11 @@ using Newtonsoft.Json;
 
 namespace MVCEngiBeering.Controllers
 {
-    public class BatchReportController : Controller
+    public class BatchController : Controller
     {
         private MvcEngibeeringContext _mvcEngibeeringContext;
 
-        public BatchReportController(MvcEngibeeringContext mvcEngibeeringContext)
+        public BatchController(MvcEngibeeringContext mvcEngibeeringContext)
         {
             _mvcEngibeeringContext = mvcEngibeeringContext;
         } 
@@ -56,9 +56,13 @@ namespace MVCEngiBeering.Controllers
             return Ok();
         }
 
-        private int getNextBatchId()
+        [HttpPost]
+        public IActionResult AddBatch(string json)
         {
-            return _mvcEngibeeringContext.batches.Max().id + 1;
+            Batch data = JsonConvert.DeserializeObject<Batch>(json);
+            _mvcEngibeeringContext.batches.Add(data);
+            _mvcEngibeeringContext.SaveChanges();
+            return Ok();
         }
     }
 }
