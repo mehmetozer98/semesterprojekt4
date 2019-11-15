@@ -21,7 +21,7 @@ namespace MVCEngiBeering.Controllers
 
         public IActionResult Get(int id)
         {
-            BBMachine machine = _mvcEngibeeringContext.machines.Include(m => m.currentstate).Single(m => m.id == id);
+            BBMachine machine = _mvcEngibeeringContext.machines.Include(m => m.currentstate).Include(m => m.currentproduct).Single(m => m.id == id);
             
             BBMachineViewModel temp = new BBMachineViewModel
             {
