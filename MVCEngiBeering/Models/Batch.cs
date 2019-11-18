@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace MVCEngiBeering.Models
 {
     public class Batch
@@ -7,5 +9,7 @@ namespace MVCEngiBeering.Models
         public ProductType producttype { get; set; }
         public int setamount { get; set; }
         public int setspeed { get; set; }
+        
+        public List<DataReading> DataReadings { get; set; }
     }
 }
