@@ -8,6 +8,7 @@ using Microsoft.VisualBasic;
 using MVCEngiBeering.Classes;
 using MVCEngiBeering.Data;
 using MVCEngiBeering.Models;
+using MVCEngiBeering.ViewModels;
 using Newtonsoft.Json;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -39,16 +40,14 @@ namespace MVCEngiBeering.Controllers
             Console.WriteLine("received json");
             Console.WriteLine("json: " + json);
             
-            DataReceiving data = JsonConvert.DeserializeObject<DataReceiving>(json);
+            DataReadingViewModel data = JsonConvert.DeserializeObject<DataReadingViewModel>(json);
             Console.WriteLine("---------------------------------------------");
             Console.WriteLine("json objected converted");
             DataReading temp = new DataReading();
-            temp.time = Convert.ToDateTime(data.TimeStamp);
-            temp.type = data.Type;
-            temp.value = data.Value;
-            temp.batchid = _mvcEngibeeringContext.batches.Find(data.BatchId);
-            BBMachine machine = _mvcEngibeeringContext.machines.Find(Convert.ToInt32(data.MachineId));
-            
+            temp.time = data.time;
+            temp.type = data.type;
+            temp.value = data.value;
+            temp.batchid = _mvcEngibeeringContext.batches.Find(data.batchid);
             Console.WriteLine("---------------------------------------------");
             Console.WriteLine("adding object");
             _mvcEngibeeringContext.datareadings.Add(temp);
