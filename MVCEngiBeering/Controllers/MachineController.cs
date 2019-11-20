@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using System.Text.Json;
 using Microsoft.AspNetCore.Mvc;
@@ -48,10 +49,18 @@ namespace MVCEngiBeering.Controllers
         [HttpPost]
         public IActionResult SendCntrlCmd(int cntrlCmdValue, int machSpeedValue, int productID, int amount, int id)
         {
-            int batchId = _mvcEngibeeringContext.batches.Max().id + 1;
+            int batchId = 0;
+            if (cntrlCmdValue == 2)
+            {
+                Console.WriteLine(_mvcEngibeeringContext.batches.Max(b => b.id));
+                batchId = _mvcEngibeeringContext.batches.Max(b => b.id) + 1;
+                
+            }
+
+            
             CntrlCmd cntrlCmd = new CntrlCmd(cntrlCmdValue, machSpeedValue, productID, amount, batchId);
             string output = JsonConvert.SerializeObject(cntrlCmd);
-            Sender sender = new Sender("127.0.0.1");
+            Sender sender = new Sender("10.126.76.251");
             sender.send(output);
             return Redirect("get/" + id);
         }

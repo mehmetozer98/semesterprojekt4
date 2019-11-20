@@ -44,7 +44,7 @@ namespace MVCEngiBeering.Controllers
             Console.WriteLine("---------------------------------------------");
             Console.WriteLine("json objected converted");
             DataReading temp = new DataReading();
-            temp.time = data.time;
+            temp.time = DateTime.Parse(data.time);
             temp.type = data.type;
             temp.value = data.value;
             temp.batchid = _mvcEngibeeringContext.batches.Find(data.batchid);
@@ -58,8 +58,15 @@ namespace MVCEngiBeering.Controllers
         [HttpPost]
         public IActionResult AddBatch(string json)
         {
-            Batch data = JsonConvert.DeserializeObject<Batch>(json);
-            _mvcEngibeeringContext.batches.Add(data);
+            BatchViewModel data = JsonConvert.DeserializeObject<BatchViewModel>(json);
+            Batch batch = new Batch();
+            batch.id = data.id;
+            batch.machine = _mvcEngibeeringContext.machines.Find(data.machine);
+            batch.producttype = _mvcEngibeeringContext.producttypes.Find(data.producttype);
+            batch.setamount = data.setamount;
+            batch.setspeed = data.setspeed;
+            _mvcEngibeeringContext.batches.Add(batch);
+            batch.id = data.id;
             _mvcEngibeeringContext.SaveChanges();
             return Ok();
         }
