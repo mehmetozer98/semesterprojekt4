@@ -48,14 +48,14 @@ namespace MVCEngiBeering.Controllers
                     currentamount = machine.currentamount,
                     currentproduct = new ProductTypeViewModel
                     {
-                        id = machine.currentproduct.id,
-                        name = machine.currentproduct.name
+                        id = machine.ProductType.id,
+                        name = machine.ProductType.name
                     },
                     currentspeed = machine.currentspeed,
                     currentstate =  new MachineStateViewModel
                     {
-                        id = machine.currentstate.id,
-                        name = machine.currentstate.name
+                        id = machine.MachineState.id,
+                        name = machine.MachineState.name
                     },
                     id = machine.id,
                     uniqueid = machine.uniqueid

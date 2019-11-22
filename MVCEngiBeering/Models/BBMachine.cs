@@ -9,16 +9,15 @@ namespace MVCEngiBeering.Models
         public int id {get; set; }
         public Guid uniqueid { get; set; }
         [Column("currentstate"),ForeignKey("id")]
-        public MachineState currentstate { get; set; }
+        public int currentstate { get; set; }
         public int currentspeed { get; set; }
         [Column("currentproduct"),ForeignKey("id")]
-        public ProductType currentproduct { get; set; }
+        public int currentproduct { get; set; }
         public int currentamount { get; set; }
         
+        public MachineState MachineState { get; set; }
+        public ProductType ProductType { get; set; }
         public List<Batch> Batches { get; set; }
-
-        public BBMachine()
-        {
-        }
+        
     }
 }

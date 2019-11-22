@@ -62,8 +62,8 @@ namespace MVCEngiBeering.Controllers
             BatchViewModel data = JsonConvert.DeserializeObject<BatchViewModel>(json);
             Batch batch = new Batch();
             batch.id = data.id;
-            batch.machine = _mvcEngibeeringContext.machines.Find(data.machine);
-            batch.producttype = _mvcEngibeeringContext.producttypes.Find(data.producttype);
+            batch.machine = _mvcEngibeeringContext.machines.Find(data.machine).id;
+            batch.producttype = _mvcEngibeeringContext.producttypes.Find(data.producttype).id;
             batch.setamount = data.setamount;
             batch.setspeed = data.setspeed;
             _mvcEngibeeringContext.batches.Add(batch);

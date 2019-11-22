@@ -7,14 +7,17 @@ namespace MVCEngiBeering.Models
     {
         public int id { get; set; }
         [Column("machineid"),ForeignKey("id")]
-        public BBMachine machine { get; set; }
+        public int machine { get; set; }
         [Column("producttype"),ForeignKey("id")]
-        public ProductType producttype { get; set; }
+        public int producttype { get; set; }
         public int setamount { get; set; }
         public int setspeed { get; set; }
         public int actualamount { get; set; }
         public int defectiveamount { get; set; }
         
+        
+        public BBMachine Machine { get; set; }
+        public ProductType ProductType { get; set; }
         public ICollection<DataReading> DataReadings { get; set; }
     }
 }
