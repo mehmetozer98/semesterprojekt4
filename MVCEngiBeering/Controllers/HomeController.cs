@@ -41,21 +41,21 @@ namespace MVCEngiBeering.Controllers
         private List<BBMachineViewModel> UpdateViewModel()
         {
             List<BBMachineViewModel> machines = new List<BBMachineViewModel>();
-            foreach (var machine in _mvcEngibeeringContext.machines.Include(m => m.currentstate).Include(m => m.currentproduct).ToList())
+            foreach (var machine in _mvcEngibeeringContext.machines.Include(m => m.currentState).Include(m => m.currentProduct).ToList())
             {
                 BBMachineViewModel temp = new BBMachineViewModel
                 {
                     currentamount = machine.currentamount,
                     currentproduct = new ProductTypeViewModel
                     {
-                        id = machine.ProductType.id,
-                        name = machine.ProductType.name
+                        id = machine.currentProduct.id,
+                        name = machine.currentProduct.name
                     },
                     currentspeed = machine.currentspeed,
                     currentstate =  new MachineStateViewModel
                     {
-                        id = machine.MachineState.id,
-                        name = machine.MachineState.name
+                        id = machine.currentState.id,
+                        name = machine.currentState.name
                     },
                     id = machine.id,
                     uniqueid = machine.uniqueid

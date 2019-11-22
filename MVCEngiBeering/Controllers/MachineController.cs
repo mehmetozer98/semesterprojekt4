@@ -22,21 +22,21 @@ namespace MVCEngiBeering.Controllers
 
         public IActionResult Get(int id)
         {
-            BBMachine machine = _mvcEngibeeringContext.machines.Include(m => m.currentstate).Include(m => m.currentproduct).Single(m => m.id == id);
+            BBMachine machine = _mvcEngibeeringContext.machines.Include(m => m.currentState).Include(m => m.currentProduct).Single(m => m.id == id);
             
             BBMachineViewModel temp = new BBMachineViewModel
             {
                 currentamount = machine.currentamount,
                 currentproduct = new ProductTypeViewModel
                 {
-                    id = machine.ProductType.id,
-                    name = machine.ProductType.name
+                    id = machine.currentProduct.id,
+                    name = machine.currentProduct.name
                 },
                 currentspeed = machine.currentspeed,
                 currentstate =  new MachineStateViewModel
                 {
-                    id = machine.MachineState.id,
-                    name = machine.MachineState.name
+                    id = machine.currentState.id,
+                    name = machine.currentState.name
                 },
                 id = machine.id,
                 uniqueid = machine.uniqueid
