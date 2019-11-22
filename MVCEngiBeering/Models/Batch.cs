@@ -15,6 +15,6 @@ namespace MVCEngiBeering.Models
         public int actualamount { get; set; }
         public int defectiveamount { get; set; }
         
-        public List<DataReading> DataReadings { get; set; }
+        public ICollection<DataReading> DataReadings { get; set; }
     }
 }

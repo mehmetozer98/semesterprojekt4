@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -41,16 +42,21 @@ namespace MVCEngiBeering.Controllers
             Console.WriteLine("json: " + json);
             
             DataReadingViewModel data = JsonConvert.DeserializeObject<DataReadingViewModel>(json);
+            Console.WriteLine("id: " + data.batchid);
+            Console.WriteLine("id: " + data.type);
             Console.WriteLine("---------------------------------------------");
             Console.WriteLine("json objected converted");
             DataReading temp = new DataReading();
-            temp.time = DateTime.Parse(data.time);
+            //temp.time = DateTime.ParseExact(data.time,"dd-MM-yyyy hh:mm:ss",CultureInfo.InvariantCulture);
+            temp.time = DateTime.Now;
             temp.type = data.type;
             temp.value = data.value;
-            temp.batchid = _mvcEngibeeringContext.batches.Find(data.batchid);
+            //temp.batchid = _mvcEngibeeringContext.batches.Find(data.batchid);
+            temp.batchid = _mvcEngibeeringContext.batches.Single(b => b.id.Equals(data.batchid));
             Console.WriteLine("---------------------------------------------");
+            Console.WriteLine("id: " + temp.batchid.id);
             Console.WriteLine("adding object");
-            _mvcEngibeeringContext.datareadings.Add(temp);
+            _mvcEngibeeringContext.Add(temp);
             _mvcEngibeeringContext.SaveChanges();
             return Ok();
         }
