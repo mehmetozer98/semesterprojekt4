@@ -11,14 +11,7 @@ namespace MVCEngiBeering.Data
             {
                 
             }
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<BBMachine>().HasOne(s => s.currentstate);
-            modelBuilder.Entity<Batch>().HasOne(s => s.machine);
-            modelBuilder.Entity<DataReading>().HasOne(s => s.batchid);
-        }
-
+        
         public DbSet<BBMachine> machines { get; set; }
         public DbSet<MachineState> statetypes { get; set; }
         public DbSet<ProductType> producttypes { get; set; }

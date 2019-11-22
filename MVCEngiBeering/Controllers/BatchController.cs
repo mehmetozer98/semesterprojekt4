@@ -42,19 +42,14 @@ namespace MVCEngiBeering.Controllers
             Console.WriteLine("json: " + json);
             
             DataReadingViewModel data = JsonConvert.DeserializeObject<DataReadingViewModel>(json);
-            Console.WriteLine("id: " + data.batchid);
-            Console.WriteLine("id: " + data.type);
             Console.WriteLine("---------------------------------------------");
             Console.WriteLine("json objected converted");
             DataReading temp = new DataReading();
-            //temp.time = DateTime.ParseExact(data.time,"dd-MM-yyyy hh:mm:ss",CultureInfo.InvariantCulture);
-            temp.time = DateTime.Now;
+            temp.time = DateTime.ParseExact(data.time,"dd-MM-yyyy hh:mm:ss",CultureInfo.InvariantCulture);
             temp.type = data.type;
             temp.value = data.value;
-            //temp.batchid = _mvcEngibeeringContext.batches.Find(data.batchid);
-            temp.batchid = _mvcEngibeeringContext.batches.Single(b => b.id.Equals(data.batchid));
+            temp.batchid = _mvcEngibeeringContext.batches.Find(data.batchid).id;
             Console.WriteLine("---------------------------------------------");
-            Console.WriteLine("id: " + temp.batchid.id);
             Console.WriteLine("adding object");
             _mvcEngibeeringContext.Add(temp);
             _mvcEngibeeringContext.SaveChanges();
