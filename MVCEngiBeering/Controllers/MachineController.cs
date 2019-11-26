@@ -60,7 +60,7 @@ namespace MVCEngiBeering.Controllers
             
             CntrlCmd cntrlCmd = new CntrlCmd(cntrlCmdValue, machSpeedValue, productID, amount, batchId);
             string output = JsonConvert.SerializeObject(cntrlCmd);
-            Sender sender = new Sender("10.126.76.251");
+            Sender sender = new Sender("10.126.50.131");
             sender.send(output);
             return Redirect("get/" + id);
         }

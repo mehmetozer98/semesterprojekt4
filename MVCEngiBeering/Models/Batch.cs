@@ -15,8 +15,9 @@ namespace MVCEngiBeering.Models
         public int actualamount { get; set; }
         public int defectiveamount { get; set; }
         
-        
+        [ForeignKey("id")]
         public BBMachine Machine { get; set; }
+        [ForeignKey("id")]
         public ProductType ProductType { get; set; }
         public ICollection<DataReading> DataReadings { get; set; }
     }

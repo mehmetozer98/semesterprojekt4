@@ -15,7 +15,9 @@ namespace MVCEngiBeering.Models
         public int currentproductid { get; set; }
         public int currentamount { get; set; }
         
+        [ForeignKey("id")]
         public MachineState currentState { get; set; }
+        [ForeignKey("id")]
         public ProductType currentProduct { get; set; }
         public List<Batch> Batches { get; set; }
         
